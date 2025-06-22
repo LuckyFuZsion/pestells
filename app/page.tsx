@@ -20,7 +20,6 @@ import {
 import Link from "next/link"
 import Image from "next/image"
 import { InteractiveHouse } from "@/components/interactive-house"
-import { Navigation } from "@/components/navigation"
 import { ContactForm } from "@/components/contact-form"
 import { ClientButton } from "@/components/client-button"
 import { useState } from "react"
@@ -30,8 +29,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0a1330" }}>
-      <Navigation />
-
       {/* Hero Section */}
       <section
         id="home"
