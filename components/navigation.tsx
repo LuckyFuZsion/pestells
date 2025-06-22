@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
-import { Menu, Phone } from "lucide-react"
+import { Menu, Phone, Flame, Wrench, Shield, Clock } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -20,11 +20,11 @@ export function Navigation() {
   }, [])
 
   const navItems = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#services", label: "Services" },
-    { href: "#contact", label: "Contact" },
-    { href: "#terms", label: "Terms" },
+    { href: "#home", label: "HOME" },
+    { href: "#services", label: "OUR SERVICES", highlight: true },
+    { href: "#about", label: "ABOUT US" },
+    { href: "#contact", label: "CONTACT US" },
+    { href: "#terms", label: "TERMS" },
   ]
 
   const scrollToSection = (href: string) => {
@@ -37,21 +37,21 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-40 transition-all duration-300 ${
         isScrolled ? "bg-white/95 backdrop-blur-sm shadow-lg" : "bg-white shadow-sm"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex-shrink-0">
+          {/* Logo and Service Icons */}
+          <div className="flex items-center space-x-8">
             <Link
               href="#home"
               onClick={(e) => {
                 e.preventDefault()
                 scrollToSection("#home")
               }}
-              className="flex items-center space-x-2"
+              className="flex-shrink-0"
             >
               <Image
                 src="https://gxciioabwrkahdfe.public.blob.vercel-storage.com/logos/Pestells_logo_trans-Nq1haSkrbvXz7jf7mUNS1VwSLLvIZO.png"
@@ -61,11 +61,27 @@ export function Navigation() {
                 className="h-16 w-auto"
               />
             </Link>
+
+            {/* Service Icons - Hidden on smaller screens */}
+            <div className="hidden lg:flex items-center space-x-4">
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 border-2 border-gray-300">
+                <Flame className="h-6 w-6 text-blue-600" />
+              </div>
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 border-2 border-gray-300">
+                <Wrench className="h-6 w-6 text-blue-600" />
+              </div>
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 border-2 border-gray-300">
+                <Shield className="h-6 w-6 text-blue-600" />
+              </div>
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 border-2 border-gray-300">
+                <Clock className="h-6 w-6 text-blue-600" />
+              </div>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="flex items-center space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -74,20 +90,14 @@ export function Navigation() {
                     e.preventDefault()
                     scrollToSection(item.href)
                   }}
-                  className="px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-blue-50 hover:text-blue-700 text-gray-700"
+                  className={`text-sm font-semibold tracking-wide transition-colors hover:text-blue-600 ${
+                    item.highlight ? "text-blue-600" : "text-gray-700"
+                  }`}
                 >
                   {item.label}
                 </Link>
               ))}
             </div>
-          </div>
-
-          {/* Call Button */}
-          <div className="hidden md:block">
-            <Button style={{ backgroundColor: '#307cb9' }} className="hover:opacity-90 text-white" size="sm">
-              <Phone className="mr-2 h-4 w-4" />
-              07872 809454
-            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -118,13 +128,15 @@ export function Navigation() {
                         e.preventDefault()
                         scrollToSection(item.href)
                       }}
-                      className="text-lg font-medium text-gray-700 hover:text-blue-700 py-2"
+                      className={`text-lg font-medium py-2 ${
+                        item.highlight ? "text-blue-600" : "text-gray-700 hover:text-blue-700"
+                      }`}
                     >
                       {item.label}
                     </Link>
                   ))}
                   <div className="pt-4 border-t">
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                    <Button style={{ backgroundColor: "#307cb9" }} className="w-full hover:opacity-90 text-white">
                       <Phone className="mr-2 h-4 w-4" />
                       Call: 07872 809454
                     </Button>
