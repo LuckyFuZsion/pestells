@@ -1,81 +1,84 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import { Phone, Mail, MapPin, Clock, Shield, Wrench, Flame, Thermometer, CheckCircle, Star } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Shield, Wrench, Flame, Thermometer, CheckCircle, Star, ChevronDown, ChevronUp } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { InteractiveHouse } from "@/components/interactive-house"
 import { Navigation } from "@/components/navigation"
 import { ContactForm } from "@/components/contact-form"
 import { ClientButton } from "@/components/client-button"
+import { useState } from "react"
 
 export default function Home() {
+  const [isTermsOpen, setIsTermsOpen] = useState(false)
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: '#0a1330' }}>
       <Navigation />
 
       {/* Hero Section */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center justify-center text-white overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center text-white overflow-hidden mt-8"
         style={{
           backgroundImage:
-            "url('https://gxciioabwrkahdfe.public.blob.vercel-storage.com/logos/Pestells-l7Dzdg8GveSDsZjNvcvvXCkAblsshE.png')",
+            "url('https://gxciioabwrkahdfe.public.blob.vercel-storage.com/logos/pestellhero_transborder_new1-oIOiAYlrMXiQJ6x9JFpmG4jOeRtXll.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundColor: "#0a1330",
         }}
       >
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            {/* Unified Text Container */}
-            <div className="bg-black/60 backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-2xl">
-              <Badge className="mb-6 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2">
-                Gas Safe Registered Engineers
+        {/* Top Company Name */}
+        <div className="absolute top-20 left-0 right-0 text-center px-4">
+          <div className="bg-black/60 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none rounded-lg p-4 max-w-2xl mx-auto">
+            <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg mb-4">
+              Pestell's Gas Care
+            </h1>
+            <div className="flex flex-col md:flex-row items-center justify-center space-y-3 md:space-y-0 md:space-x-4">
+              <Badge className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 text-sm font-semibold">
+                Gas Safe Registered
               </Badge>
-              
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-lg">
-                Pestell's Gas Care
-                <span className="block text-3xl md:text-4xl font-normal text-blue-200 mt-2">Grantham</span>
-              </h1>
-              
-              <p className="text-xl md:text-2xl mb-8 text-gray-100 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
-                Specializing in service and repair of natural gas and LPG appliances including boilers, cookers, fires, and central heating systems. Always happy to help - just send us a message. 24/7 emergency call-out available across Grantham and surrounding areas.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <ClientButton size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg shadow-lg">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Call Now: 07872 809454
-                </ClientButton>
-                <ClientButton
-                  size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg shadow-lg"
-                >
-                  Get Free Quote
-                </ClientButton>
-              </div>
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 text-lg shadow-lg">
+                Contact Us
+              </Button>
             </div>
           </div>
         </div>
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Empty container - all text removed */}
+        </div>
+        
+        {/* Bottom Text */}
+        <div className="absolute bottom-4 left-0 right-0 text-center px-4">
+          <div className="bg-black/60 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none rounded-lg p-6 max-w-5xl mx-auto">
+            <p className="text-lg md:text-xl mb-4 text-gray-100">
+              Specialising in service and repair of natural gas and LPG appliances including boilers, cookers, fires, and central heating systems.
+            </p>
+            <p className="text-lg md:text-xl mb-4 text-gray-100">
+              Always happy to help, just send us a message.
+            </p>
+            <p className="text-lg md:text-xl text-gray-100">
+              24/7 emergency call-out available across Grantham and surrounding areas.
+            </p>
           </div>
         </div>
       </section>
 
       {/* About Us Section */}
-      <section id="about" className="py-20 bg-gray-50">
+      <section id="about" className="py-20 bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">About Pestell's Gas Care</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">About Pestell's Gas Care</h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                 Established in 2021 and serving Grantham and the surrounding areas, we're your trusted local
                 gas engineers specializing in natural gas and LPG appliances.
               </p>
@@ -85,10 +88,10 @@ export default function Home() {
               <div>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
-                    <Shield className="h-8 w-8 text-blue-600 mt-1 flex-shrink-0" />
+                    <Shield className="h-8 w-8" style={{ color: '#307cb9' }} />
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Gas Safe Registered</h3>
-                      <p className="text-gray-600">
+                      <h3 className="text-xl font-semibold text-white mb-2">Gas Safe Registered</h3>
+                      <p className="text-gray-300">
                         All our engineers are fully qualified and Gas Safe registered, ensuring your safety and peace of
                         mind.
                       </p>
@@ -96,20 +99,20 @@ export default function Home() {
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <Star className="h-8 w-8 text-blue-600 mt-1 flex-shrink-0" />
+                    <Star className="h-8 w-8" style={{ color: '#307cb9' }} />
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Established Since 2021</h3>
-                      <p className="text-gray-600">
+                      <h3 className="text-xl font-semibold text-white mb-2">Established Since 2021</h3>
+                      <p className="text-gray-300">
                         Serving Grantham with a proven track record of reliable, professional service and customer satisfaction.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <Clock className="h-8 w-8 text-blue-600 mt-1 flex-shrink-0" />
+                    <Clock className="h-8 w-8" style={{ color: '#307cb9' }} />
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">24/7 Emergency Service</h3>
-                      <p className="text-gray-600">
+                      <h3 className="text-xl font-semibold text-white mb-2">24/7 Emergency Service</h3>
+                      <p className="text-gray-300">
                         Available for emergency call-outs because we understand heating problems don't wait for
                         convenient times.
                       </p>
@@ -117,10 +120,10 @@ export default function Home() {
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <CheckCircle className="h-8 w-8 text-blue-600 mt-1 flex-shrink-0" />
+                    <CheckCircle className="h-8 w-8" style={{ color: '#307cb9' }} />
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Fully Insured</h3>
-                      <p className="text-gray-600">
+                      <h3 className="text-xl font-semibold text-white mb-2">Fully Insured</h3>
+                      <p className="text-gray-300">
                         Comprehensive insurance coverage for complete protection and professional peace of mind.
                       </p>
                     </div>
@@ -136,9 +139,9 @@ export default function Home() {
                   height={500}
                   className="rounded-lg shadow-xl"
                 />
-                <div className="absolute -bottom-6 -left-6 bg-blue-600 text-white p-6 rounded-lg shadow-lg">
-                  <div className="text-3xl font-bold">5* Rated</div>
-                  <div className="text-sm">on Facebook</div>
+                <div className="absolute -bottom-6 -left-6 p-6 rounded-lg shadow-lg" style={{ backgroundColor: '#307cb9' }}>
+                  <div className="text-3xl font-bold text-white">5* Rated</div>
+                  <div className="text-sm text-white">on Facebook</div>
                 </div>
               </div>
             </div>
@@ -147,12 +150,12 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-white">
+      <section id="services" className="py-20" style={{ backgroundColor: '#0a1330' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Services</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Services</h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                 Click on different areas of the house below to explore our comprehensive range of gas and heating
                 services.
               </p>
@@ -162,16 +165,16 @@ export default function Home() {
 
             {/* Service Cards */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-              <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-blue-600">
+              <Card className="hover:shadow-lg transition-shadow border-l-4" style={{ backgroundColor: '#0a1330', borderLeftColor: '#307cb9' }}>
                 <CardHeader>
-                  <Flame className="h-12 w-12 text-blue-600 mb-4" />
-                  <CardTitle>Boiler Installation</CardTitle>
-                  <CardDescription>
+                  <Flame className="h-12 w-12 mb-4" style={{ color: '#307cb9' }} />
+                  <CardTitle className="text-white">Boiler Installation</CardTitle>
+                  <CardDescription className="text-gray-300">
                     Professional boiler installation with full warranty and aftercare service.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-2 text-sm text-gray-600">
+                  <ul className="space-y-2 text-sm text-gray-300">
                     <li>• New boiler installations</li>
                     <li>• Boiler replacements</li>
                     <li>• System upgrades</li>
@@ -180,16 +183,16 @@ export default function Home() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-orange-500">
+              <Card className="hover:shadow-lg transition-shadow border-l-4" style={{ backgroundColor: '#0a1330', borderLeftColor: '#307cb9' }}>
                 <CardHeader>
-                  <Wrench className="h-12 w-12 text-orange-500 mb-4" />
-                  <CardTitle>Boiler Repairs</CardTitle>
-                  <CardDescription>
+                  <Wrench className="h-12 w-12 mb-4" style={{ color: '#307cb9' }} />
+                  <CardTitle className="text-white">Boiler Repairs</CardTitle>
+                  <CardDescription className="text-gray-300">
                     Fast, reliable boiler repair service to get your heating back up and running.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-2 text-sm text-gray-600">
+                  <ul className="space-y-2 text-sm text-gray-300">
                     <li>• Emergency repairs</li>
                     <li>• Diagnostic services</li>
                     <li>• Parts replacement</li>
@@ -198,16 +201,16 @@ export default function Home() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-blue-600">
+              <Card className="hover:shadow-lg transition-shadow border-l-4" style={{ backgroundColor: '#0a1330', borderLeftColor: '#307cb9' }}>
                 <CardHeader>
-                  <Thermometer className="h-12 w-12 text-blue-600 mb-4" />
-                  <CardTitle>Central Heating</CardTitle>
-                  <CardDescription>
+                  <Thermometer className="h-12 w-12 mb-4" style={{ color: '#307cb9' }} />
+                  <CardTitle className="text-white">Central Heating</CardTitle>
+                  <CardDescription className="text-gray-300">
                     Complete central heating solutions from installation to maintenance.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-2 text-sm text-gray-600">
+                  <ul className="space-y-2 text-sm text-gray-300">
                     <li>• System installation</li>
                     <li>• Radiator fitting</li>
                     <li>• Pipe work</li>
@@ -239,67 +242,71 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50">
+      <section id="contact" className="py-20 bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Get In Touch</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Ready to discuss your gas and heating needs? Contact us today for a free, no-obligation quote.
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Contact Us</h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                Get in touch for a free quote or to schedule a service. We're here to help with all your gas and
+                heating needs.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-12">
+            <div className="grid md:grid-cols-2 gap-12">
               {/* Contact Information */}
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
-
+                  <h3 className="text-2xl font-semibold text-white mb-6">Get In Touch</h3>
                   <div className="space-y-4">
                     <div className="flex items-center space-x-4">
-                      <Phone className="h-6 w-6 text-blue-600" />
+                      <div className="p-3 rounded-full" style={{ backgroundColor: '#307cb9' }}>
+                        <Phone className="h-6 w-6 text-white" />
+                      </div>
                       <div>
-                        <div className="font-semibold">Phone</div>
-                        <div className="text-gray-600">07872 809454</div>
+                        <p className="font-semibold text-white">Phone</p>
+                        <p className="text-gray-300">07872 809454</p>
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-4">
-                      <Mail className="h-6 w-6 text-blue-600" />
+                      <div className="p-3 rounded-full" style={{ backgroundColor: '#307cb9' }}>
+                        <Mail className="h-6 w-6 text-white" />
+                      </div>
                       <div>
-                        <div className="font-semibold">Email</div>
-                        <div className="text-gray-600">pestellsgascare@gmail.com</div>
+                        <p className="font-semibold text-white">Email</p>
+                        <p className="text-gray-300">pestellsgascare@gmail.com</p>
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-4">
-                      <MapPin className="h-6 w-6 text-blue-600" />
+                      <div className="p-3 rounded-full" style={{ backgroundColor: '#307cb9' }}>
+                        <MapPin className="h-6 w-6 text-white" />
+                      </div>
                       <div>
-                        <div className="font-semibold">Service Area</div>
-                        <div className="text-gray-600">Grantham & Surrounding Areas</div>
+                        <p className="font-semibold text-white">Location</p>
+                        <p className="text-gray-300">Grantham, Lincolnshire</p>
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-4">
-                      <Clock className="h-6 w-6 text-blue-600" />
+                      <div className="p-3 rounded-full" style={{ backgroundColor: '#307cb9' }}>
+                        <Clock className="h-6 w-6 text-white" />
+                      </div>
                       <div>
-                        <div className="font-semibold">Hours</div>
-                        <div className="text-gray-600">
-                          Mon-Fri: 8AM-6PM
-                          <br />
-                          Emergency: 24/7
-                        </div>
+                        <p className="font-semibold text-white">Emergency Service</p>
+                        <p className="text-gray-300">24/7 Available</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-l-blue-600">
-                  <h4 className="font-semibold text-gray-900 mb-2">Emergency Call-Out</h4>
-                  <p className="text-gray-600 mb-4">
+                <div className="p-6 rounded-lg border-l-4" style={{ backgroundColor: '#0a1330', borderLeftColor: '#307cb9' }}>
+                  <h4 className="font-semibold text-white mb-2">Emergency Call-Out</h4>
+                  <p className="text-gray-300 mb-4">
                     Need urgent gas or heating assistance? We're available 24/7 for emergency call-outs.
                   </p>
-                  <ClientButton className="bg-orange-500 hover:bg-orange-600">
+                  <ClientButton style={{ backgroundColor: '#307cb9' }} className="hover:opacity-90">
                     <Phone className="mr-2 h-4 w-4" />
                     Emergency: 07872 809454
                   </ClientButton>
@@ -314,79 +321,100 @@ export default function Home() {
       </section>
 
       {/* Terms & Conditions Section */}
-      <section id="terms" className="py-20 bg-white">
+      <section id="terms" className="py-20" style={{ backgroundColor: '#0a1330' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 text-center">Terms & Conditions</h2>
-
-            <div className="prose prose-lg max-w-none">
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-2xl font-semibold text-blue-600 mb-4">1. Service Agreement</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    All work carried out by Pestell's Gas Care is subject to these terms and conditions. By engaging our
-                    services, you agree to be bound by these terms.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-semibold text-blue-600 mb-4">2. Qualifications & Insurance</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    All engineers are Gas Safe registered and fully insured. We carry comprehensive public liability
-                    insurance and all work is guaranteed.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-semibold text-blue-600 mb-4">3. Pricing & Payment</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    All quotes are valid for 30 days. Payment is due upon completion of work unless alternative
-                    arrangements have been agreed in writing. We accept cash, cheque, and bank transfer.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-semibold text-blue-600 mb-4">4. Warranty</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    We provide a 12-month warranty on all workmanship. Manufacturer warranties apply to all parts and
-                    equipment supplied.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-semibold text-blue-600 mb-4">5. Cancellation Policy</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    Appointments can be cancelled with 24 hours notice. Emergency call-outs may be subject to a call-out
-                    charge if cancelled within 2 hours of the agreed time.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-semibold text-blue-600 mb-4">6. Health & Safety</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    We comply with all relevant health and safety regulations. Customers must provide safe access to
-                    work areas and inform us of any potential hazards.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-semibold text-blue-600 mb-4">7. Data Protection</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    We are committed to protecting your privacy and comply with GDPR regulations. Customer information
-                    is kept confidential and used only for service delivery.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-12 p-6 bg-blue-50 rounded-lg border-l-4 border-l-blue-600">
-                <p className="text-sm text-gray-600">
-                  <strong>Last updated:</strong> January 2024
-                  <br />
-                  <strong>Contact:</strong> For any questions regarding these terms, please contact us at
-                  pestellsgascare@gmail.com or 07872 809454.
-                </p>
-              </div>
+            <div className="text-center mb-8">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Terms & Conditions</h2>
+              <Button 
+                onClick={() => setIsTermsOpen(!isTermsOpen)}
+                variant="outline"
+                className="flex items-center space-x-2 mx-auto border-white text-white hover:bg-white hover:text-gray-900 bg-transparent"
+              >
+                {isTermsOpen ? (
+                  <>
+                    <ChevronUp className="h-4 w-4" />
+                    <span>Hide Terms & Conditions</span>
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="h-4 w-4" />
+                    <span>Show Terms & Conditions</span>
+                  </>
+                )}
+              </Button>
             </div>
+
+            {isTermsOpen && (
+              <div className="prose prose-lg max-w-none animate-in slide-in-from-top-2 duration-300">
+                <div className="space-y-8">
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4" style={{ color: '#307cb9' }}>1. Service Agreement</h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      All work carried out by Pestell's Gas Care is subject to these terms and conditions. By engaging our
+                      services, you agree to be bound by these terms.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4" style={{ color: '#307cb9' }}>2. Qualifications & Insurance</h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      All engineers are Gas Safe registered and fully insured. We carry comprehensive public liability
+                      insurance and all work is guaranteed.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4" style={{ color: '#307cb9' }}>3. Pricing & Payment</h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      All quotes are valid for 30 days. Payment is due upon completion of work unless alternative
+                      arrangements have been agreed in writing. We accept cash, cheque, and bank transfer.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4" style={{ color: '#307cb9' }}>4. Warranty</h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      We provide a 12-month warranty on all workmanship. Manufacturer warranties apply to all parts and
+                      equipment supplied.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4" style={{ color: '#307cb9' }}>5. Cancellation Policy</h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      Appointments can be cancelled with 24 hours notice. Emergency call-outs may be subject to a call-out
+                      charge if cancelled within 2 hours of the agreed time.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4" style={{ color: '#307cb9' }}>6. Health & Safety</h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      We comply with all relevant health and safety regulations. Customers must provide safe access to
+                      work areas and inform us of any potential hazards.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4" style={{ color: '#307cb9' }}>7. Data Protection</h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      We are committed to protecting your privacy and comply with GDPR regulations. Customer information
+                      is kept confidential and used only for service delivery.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-12 p-6 rounded-lg border-l-4" style={{ backgroundColor: '#0a1330', borderLeftColor: '#307cb9' }}>
+                  <p className="text-sm text-gray-300">
+                    <strong>Last updated:</strong> January 2024
+                    <br />
+                    <strong>Contact:</strong> For any questions regarding these terms, please contact us at
+                    pestellsgascare@gmail.com or 07872 809454.
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -410,13 +438,13 @@ export default function Home() {
                   Your trusted Gas Safe registered engineers serving Grantham and surrounding areas.
                 </p>
                 <div className="flex space-x-4">
-                  <Badge className="bg-blue-600">Gas Safe Registered</Badge>
-                  <Badge className="bg-orange-500">Fully Insured</Badge>
+                  <Badge style={{ backgroundColor: '#307cb9' }}>Gas Safe Registered</Badge>
+                  <Badge style={{ backgroundColor: '#307cb9' }}>Fully Insured</Badge>
                 </div>
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+                <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
                 <ul className="space-y-2 text-gray-300">
                   <li>
                     <Link href="#home" className="hover:text-blue-400 transition-colors">
@@ -447,7 +475,7 @@ export default function Home() {
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
+                <h4 className="text-lg font-semibold text-white mb-4">Contact Info</h4>
                 <div className="space-y-2 text-gray-300">
                   <div className="flex items-center space-x-2">
                     <Phone className="h-4 w-4" />
