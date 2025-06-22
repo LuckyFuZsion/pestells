@@ -77,6 +77,17 @@ export function Navigation() {
                 <Clock className="h-6 w-6 text-blue-600" />
               </div>
             </div>
+
+            {/* Gas Safe Logo - Desktop only */}
+            <div className="hidden lg:block">
+              <Image
+                src="/gas-safe-logo.png"
+                alt="Gas Safe Registered"
+                width={80}
+                height={40}
+                className="h-10 w-auto"
+              />
+            </div>
           </div>
 
           {/* Desktop Navigation */}
