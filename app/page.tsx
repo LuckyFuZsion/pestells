@@ -645,7 +645,7 @@ export default function Home() {
                     height={50}
                     className="h-10 w-auto"
                   />
-                  <p className="text-sm text-gray-400">Gas Safe Registration No: [Your Registration Number]</p>
+                  <p className="text-sm text-gray-400">Gas Safe Registration No: 666533</p>
                 </div>
               </div>
             </div>
