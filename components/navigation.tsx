@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 import { Menu, Phone } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -42,7 +42,7 @@ export function Navigation() {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link
@@ -56,9 +56,9 @@ export function Navigation() {
               <Image
                 src="https://gxciioabwrkahdfe.public.blob.vercel-storage.com/logos/Pestells_logo_trans-Nq1haSkrbvXz7jf7mUNS1VwSLLvIZO.png"
                 alt="Pestell's Gas Care Logo"
-                width={140}
-                height={45}
-                className="h-11 w-auto"
+                width={180}
+                height={60}
+                className="h-16 w-auto"
               />
             </Link>
           </div>
@@ -84,7 +84,7 @@ export function Navigation() {
 
           {/* Call Button */}
           <div className="hidden md:block">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white" size="sm">
+            <Button style={{ backgroundColor: '#307cb9' }} className="hover:opacity-90 text-white" size="sm">
               <Phone className="mr-2 h-4 w-4" />
               07872 809454
             </Button>
@@ -99,6 +99,7 @@ export function Navigation() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <div className="flex flex-col space-y-4 mt-8">
                   <div className="mb-6">
                     <Image

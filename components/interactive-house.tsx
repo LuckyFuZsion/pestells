@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Flame, Thermometer, Wrench, Shield, CheckCircle, Zap, Droplets } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Flame, Thermometer, Wrench, Shield, CheckCircle, Zap, Droplets, X } from "lucide-react"
 
 const serviceAreas = [
   {
@@ -150,46 +151,58 @@ export function InteractiveHouse() {
               onClick={() => setSelectedArea(selectedArea === area.id ? null : area.id)}
             />
           ))}
-        </div>
 
-        {/* Service Details */}
-        {selectedService && (
-          <Card className="mt-8 border-2 border-blue-200 shadow-lg">
-            <CardHeader>
-              <div className="flex items-center space-x-3">
-                <div
-                  className={`w-12 h-12 rounded-full ${selectedService.color} text-white flex items-center justify-center`}
-                >
-                  <selectedService.icon className="h-6 w-6" />
-                </div>
-                <div>
-                  <CardTitle className="text-2xl">{selectedService.name}</CardTitle>
-                  <CardDescription className="text-lg">{selectedService.description}</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-3">Services Include:</h4>
-                  <ul className="space-y-2">
-                    {selectedService.services.map((service, index) => (
-                      <li key={index} className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-blue-600 flex-shrink-0" />
-                        <span className="text-gray-700">{service}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="flex flex-col justify-center space-y-3">
-                  <Badge className="bg-blue-100 text-blue-800 w-fit">Gas Safe Registered</Badge>
-                  <Badge className="bg-orange-100 text-orange-800 w-fit">Fully Insured</Badge>
-                  <Badge className="bg-blue-100 text-blue-800 w-fit">24/7 Emergency</Badge>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        )}
+          {/* Service Details Overlay */}
+          {selectedService && (
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+              <Card className="w-full max-w-2xl border-2 border-blue-200 shadow-xl bg-white">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div
+                        className={`w-12 h-12 rounded-full ${selectedService.color} text-white flex items-center justify-center`}
+                      >
+                        <selectedService.icon className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-2xl text-gray-900">{selectedService.name}</CardTitle>
+                        <CardDescription className="text-lg text-gray-600">{selectedService.description}</CardDescription>
+                      </div>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setSelectedArea(null)}
+                      className="h-8 w-8 p-0 hover:bg-gray-100"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-3">Services Include:</h4>
+                      <ul className="space-y-2">
+                        {selectedService.services.map((service, index) => (
+                          <li key={index} className="flex items-center space-x-2">
+                            <CheckCircle className="h-4 w-4 text-blue-600 flex-shrink-0" />
+                            <span className="text-gray-700">{service}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="flex flex-col justify-center space-y-3">
+                      <Badge className="bg-blue-100 text-blue-800 w-fit">Gas Safe Registered</Badge>
+                      <Badge className="bg-orange-100 text-orange-800 w-fit">Fully Insured</Badge>
+                      <Badge className="bg-blue-100 text-blue-800 w-fit">24/7 Emergency</Badge>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          )}
+        </div>
 
         {!selectedService && (
           <div className="mt-8 text-center">
