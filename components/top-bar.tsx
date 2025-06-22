@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export function TopBar() {
   return (
-    <div className="bg-gray-900 text-white py-2 px-4">
+    <div className="hidden md:block bg-gray-900 text-white py-2 px-4">
       <div className="container mx-auto flex items-center justify-between">
         {/* Contact Info */}
         <div className="flex items-center space-x-6 text-sm">
